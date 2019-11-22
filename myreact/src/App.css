@@ -1,22 +1,62 @@
-.App {
-  text-align: center;
+.App{
+  background:#ff9;
 }
 
-.App-logo {
-  height: 40vmin;
+.inner{
+  width:85%;
+  margin:0 auto;
+  display:flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* PC */
+@media (min-width : 1280px ){
+  .sidemenu{
+    width:200px;
+    
+    background:#99f;
+  }
+  
+
+  /* clac 는 +/- 사이에 공백이 필요하다. */
+  .main{
+    width: calc(100% - 200px);
+    width: -moz-calc(100% - 200px);
+    width: -webkit-calc(100% - 200px);
+    width: -o-calc(100% - 200px);
+
+    background:#f9f;
+  }
+
 }
 
-.App-link {
-  color: #09d3ac;
+
+/* TABLET */
+@media (min-width : 768PX ) and (max-width : 1279px){
+  .sidemenu{
+    
+    background:rgb(251, 255, 2);
+  }
+  
+  .main{
+    background:rgb(37, 255, 18);
+  }
+
+}
+
+
+/* MOBILE */
+@media (max-width : 767PX ) {
+  .sidemenu{
+    
+    background:rgb(240, 10, 10);
+  }
+  
+  .main{
+    background:rgb(22, 18, 255);
+  }
+
 }
