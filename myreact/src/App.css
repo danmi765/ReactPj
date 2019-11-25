@@ -1,59 +1,160 @@
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, code,del, dfn, em, img, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td ,hr {margin:0; padding:0;}
+ol, ul, li {list-style:none;margin:0;padding:0;}
+body{font-size:16px;}
+a{text-decoration: none;color:#878787;}
+
 .App{
-  background:#ff9;
+  background:#f2ebe6;
 }
 
 .inner{
-  width:85%;
+  width:100%;
   margin:0 auto;
+}
+
+.felxBox{
   display:flex;
   flex-direction: row;
   justify-content: left;
   align-content: center;
   flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
-/* PC */
-@media (min-width : 1280px ){
-  .sidemenu{
-    width:200px;
-    
-    background:#99f;
-  }
-  
+div{position: relative;font-family: 'Black Han Sans', sans-serif;}
+button{border:none;background:none;cursor:pointer;}
 
-  /* clac 는 +/- 사이에 공백이 필요하다. */
-  .main{
-    width: calc(100% - 200px);
-    width: -moz-calc(100% - 200px);
-    width: -webkit-calc(100% - 200px);
-    width: -o-calc(100% - 200px);
-
-    background:#f9f;
-  }
-
-}
-
-
-/* TABLET */
-@media (min-width : 768PX ) and (max-width : 1279px){
-  .sidemenu{
-    
-    background:rgb(251, 255, 2);
-  }
+/* PC , TABLET */
+@media (min-width : 961px ) {
   
   .main{
-    background:rgb(37, 255, 18);
+    background:#fff;
+    max-width:1450px;
+    margin:115px auto 0;
   }
 
+  .menu{
+    background:#fff;
+    padding:25px 10px 0;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    box-shadow: 0 1px 5px 0 #ccc;
+    z-index:9999;
+  }
+  
+  .menu h1{width:85px;padding-bottom:14px;}
+  .menu h1 a{display:block;}
+  .menu h1 a img{display:block;width:100%;}
+
+  .menu .menu_inner{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .menu .menu_list{
+    width: calc(100% - 85px);
+    width: -moz-calc(100% - 85px);
+    width: -webkit-calc(100% - 85px);
+    width: -o-calc(100% - 85px);
+  }
+
+  .menu .menu_list ul.main_menu{
+    position: absolute;
+    top:24px;
+    left:0;
+    padding-left:60px;
+    width: calc(100% - 130px);
+    width: -moz-calc(100% - 130px);
+    width: -webkit-calc(100% - 130px);
+    width: -o-calc(100% - 130px);
+    max-width: 850px;
+    min-width:580px;
+    z-index:100;
+  }
+  .menu .menu_list ul.main_menu > li{
+    position: relative;
+    width:25%;
+  }
+  .menu .menu_list ul.main_menu > li > button{
+    display:block;
+    color:#000;
+    font-size:1.4em;
+    letter-spacing: -0.08em;
+    padding-bottom:21px;
+    font-family: 'Black Han Sans', sans-serif;
+  }
+  .menu .menu_list ul.main_menu > li > button > img{
+
+  }
+  .menu .menu_list .delivery_icon{
+    width:160px;
+    background:url("/images/deliveryIcon.png") no-repeat center center;
+    border:none;
+    text-indent:-9999em;
+    height:50px;
+    background-size:100% 100%;
+    position: absolute;
+    top:10px;
+    right:0;
+    cursor:pointer;
+    z-index:101;
+  }
+
+  
+  .menu.open{
+    padding-bottom:240px;
+    z-index:100;
+  }
+
+  .menu.open ul.sub_menu{display:block;}
+  .menu ul.sub_menu{
+    min-height:240px;
+    display:none;
+    background:#fff;
+    position: absolute;
+    top:100%;
+    left:0;
+    min-width:100%;
+    z-index:100;
+  }
+  .menu .menu_list ul.sub_menu li{
+    width:100%;
+  }
+  .menu .menu_list ul.sub_menu li button{
+    display:block;
+    font-size:0.9em;
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Gothic A1', sans-serif;
+    color:#000;
+    font-weight:bold;
+    letter-spacing: -0.1em;
+    padding:2px 10px;
+  }
+
+  .banner{}
+  .banner > div{}
+  .banner > div > div{}
+  .banner > div > div > img{
+    display:block;
+    width:100%;
+  }
+
+  .video{}
+  .video iframe{margin-top:-8px;}
+
+
 }
+
+
+
+
 
 
 /* MOBILE */
-@media (max-width : 767PX ) {
-  .sidemenu{
-    
-    background:rgb(240, 10, 10);
-  }
+@media (max-width : 960px ) {
   
   .main{
     background:rgb(22, 18, 255);

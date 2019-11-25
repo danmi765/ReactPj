@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/danmi765/ReactPj/issues"
   },
-  "homepage": "https://github.com/danmi765/ReactPj#readme"
+  "homepage": "https://github.com/danmi765/ReactPj#readme",
+  "dependencies": {
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1"
+  }
 }
