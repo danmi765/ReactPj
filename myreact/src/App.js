@@ -19,6 +19,7 @@ class App extends React.Component{
       <div className="App">
         <div className="inner">
           {this.state.main}
+          
         </div>
       </div>
     );

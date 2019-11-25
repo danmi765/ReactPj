@@ -7,23 +7,29 @@ class Menu extends React.Component{
       super(props);
       this.state = {
         menuToggle : "menu felxBox" ,
+        bg:false,
       }
   }
 
   menuMouseOver  = (e) => {
     this.setState({
         menuToggle : "menu felxBox open",
+        bg:true,
     })
   }
   menuMouseDown  = (e) => {
     this.setState({
         menuToggle : "menu felxBox",
+        bg:false,
     })
   }
  
   render(){
+    
+    
     return (
       <div className={this.state.menuToggle}>
+        { this.state.bg  && <img className="menu_bg" src="/images/bg_login.gif"  /> }
           <div className="menu_inner felxBox">
             <h1><a href="/"><img src="/images/logo.png" /></a></h1>
             <div className="menu_list felxBox">

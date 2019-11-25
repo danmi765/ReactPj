@@ -134,6 +134,13 @@ button{border:none;background:none;cursor:pointer;}
     padding:2px 10px;
   }
 
+  .menu_bg{
+    position: absolute;
+    bottom:0;
+    right:0;
+    z-index:300
+  }
+
   .banner{}
   .banner > div{}
   .banner > div > div{}
@@ -144,6 +151,57 @@ button{border:none;background:none;cursor:pointer;}
 
   .video{}
   .video iframe{margin-top:-8px;}
+
+  .sns_button{
+    margin-top:-8px;
+    background:#683a2f;
+  }
+
+  .sns_inner{
+    width:100%;
+    min-width:1210px;
+  }
+  .sns_inner > div{
+    width: calc(100% / 3);
+  }
+  .sns_inner > div > a{
+    display:block;
+    padding:20px 0 55px 180px;
+    
+  }
+  .sns_inner > div > a span{
+    display:inline-block;
+    border-radius: 5px;
+    padding: 3px 5px 3px 40px;
+    font-size:1em;
+    font-weight:bold;
+    letter-spacing: -0.09em;
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
+    background-repeat:no-repeat;
+    background-position:left 5px center;
+    background-size:35%;
+  }
+  .sns_inner > div > a span.title{
+    color:#fff;
+    font-size:1.5em;
+    display:block;
+    padding-left:46px;
+  }
+  .sns_inner > div > a span.status{
+    background-color:#fff;
+    color:#333;
+    margin-left:45px;
+    padding-right:15px;
+  }
+  .sns_inner > div.youtube span.status{background-image:url("/images/sns_youtube.png");}
+  .sns_inner > div.facebook span.status{background-image:url("/images/sns_facebook.png");background-size:22%;}
+  .sns_inner > div.instagram span.status{background-image:url("/images/sns_instagram.png");background-size:20%;}
+  
+  .sns_inner > div.youtube > a{background:url("/images/youtube.png") no-repeat left 100px top 25px;background-size:110px;}
+  .sns_inner > div.facebook > a{background:url("/images/youtube.png") no-repeat left 100px top 25px;background-size:110px;}
+  .sns_inner > div.instagram > a{background:url("/images/instargram.png") no-repeat left 100px top 25px;background-size:110px;}
 
 
 }
