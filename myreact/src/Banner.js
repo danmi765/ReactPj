@@ -36,7 +36,7 @@ class Banner extends React.Component{
     this.setState({
         banner : this.state.pc,
     });
-      if(window.innerWidth < 870){
+      if(window.innerWidth < 960){
         this.setState({
             banner : this.state.mobile,
         });
