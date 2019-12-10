@@ -9,6 +9,7 @@ import Foot from './Foot.js';
 import Home from './router/Home.js';
 import Special from'./router/Special.js';
 import Premium from'./router/Premium.js';
+import Wafer from'./router/Burger.js';
 
 
 class Main extends React.Component{
@@ -58,8 +59,9 @@ class Main extends React.Component{
 
           <Switch> 
             <Route exact path="/" render={(props) => <Home isMobile={this.state.m} {...props} />}/>
-            <Route path="/special" render={(props) => <Special isMobile={this.state.m} {...props} />}/>
-            <Route path="/premium" render={(props) => <Premium isMobile={this.state.m} {...props} />}/>
+            <Route path="/special" render={(props) => <Special {...props} />}/>
+            <Route path="/premium" render={(props) => <Premium {...props} />}/>
+            <Route path="/burger" render={(props) => <Wafer {...props} />}/>
           </Switch>
 
           
