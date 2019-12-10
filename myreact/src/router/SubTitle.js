@@ -16,10 +16,8 @@ class SubTitle extends React.Component {
                 <div className="subpage_title"> 
                     <div className="inner">
                         <span>HOME</span>
-                        <span>></span>
-                        <span>{this.props.name}</span>
-                        {this.props.name2 && <span>></span> }
-                        <span>{this.props.name2}</span>
+                        <span class="bracket">{this.props.name}</span>
+                        <span class="bracket">{this.props.name2}</span>
                     </div>
                 </div>
             </div>
