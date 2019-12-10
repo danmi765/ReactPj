@@ -91,6 +91,8 @@ button{border:none;background:none;cursor:pointer;}
     letter-spacing: -0.08em;
     padding-bottom:21px;
     font-family: 'Black Han Sans', sans-serif;
+    width:100%;
+    text-align:left;
   }
   .menu .menu_list ul.main_menu > li > button > img{
 
@@ -137,6 +139,8 @@ button{border:none;background:none;cursor:pointer;}
     font-weight:bold;
     letter-spacing: -0.1em;
     padding:2px 10px;
+    width:100%;
+    text-align: left;
   }
 
   .menu_bg{
@@ -457,6 +461,24 @@ button{border:none;background:none;cursor:pointer;}
     transition:opacity 0.5s 0.5s;
   }
 
+
+  .subpage_title{
+    background:black;
+  }
+  .subpage_title .inner{
+    max-width:1200px;
+    padding:12px 20px;
+  }
+  .subpage_title .inner span{
+    display:inline-block;
+    vertical-align: middle;
+    padding-right:10px;
+    color:#fff;
+    font-family: 'Gothic A1', sans-serif;
+    font-size:0.85em;
+    letter-spacing: -1px;
+    font-weight:bold;
+  }
 }
 
 /* MOBILE */
@@ -590,7 +612,7 @@ button{border:none;background:none;cursor:pointer;}
   .menu .menu_list > ul.main_menu > li > ul.sub_menu > li{
     margin-bottom:6px;
   }
-  .menu .menu_list > ul.main_menu > li > ul.sub_menu > li > button{
+  .menu .menu_list > ul.main_menu > li > ul.sub_menu > li button{
     font-family: 'Do Hyeon', sans-serif;
     font-size:1.3em;
     font-weight:bold;
@@ -713,7 +735,7 @@ button{border:none;background:none;cursor:pointer;}
   }
   .search_guide > div > div{
     color:red;
-    font-size:1.2em;
+    font-size:1em;
     font-weight:normal;
     margin-top:10px;
   }
@@ -808,9 +830,9 @@ button{border:none;background:none;cursor:pointer;}
     font-family: 'Do Hyeon', sans-serif;
     letter-spacing: -0.09em;
     font-weight:bold;
-    font-size:1.1em;
+    font-size:0.8em;
     padding:0 10px;
-    width:calc(100% / 3 - 10px);
+    width:calc(100% / 3 - 5px);
     text-align:center;
   }
   .foot_inner > div:nth-child(1) > div:nth-child(1) > span{

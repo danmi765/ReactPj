@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
+import MenuList from './MenuList.js';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Foot extends React.Component{
 
   constructor(props){
       super(props);
       this.state = {
-        m : false
+        m : props.isMobile
       }
   }
 
@@ -32,65 +34,35 @@ class Foot extends React.Component{
   }
   componentWillUnmount(){
     window.addEventListener("resize",this.handleResize, false);
+    this.setState({
+      m:this.props.isMobile
+    })
   }
-  render(){
-    console.log(this.state.m);
+  render(){   
+   
+    //메뉴
+    const menus = MenuList.menus;
+    const submenus = MenuList.submenus;
+    const submenuUrl = MenuList.submenuUrl;
+    
+    const submenuList = submenus.map( (submenus,i) => (
+        <li>
+          <ul className="foot_sub_menu">
+            <li>{menus[i]}</li>
+          {submenus.map( (submenus,j)=>(
+              <li><Link to={submenuUrl[i][j]}>{submenus}</Link></li>
+          ))}
+          </ul>
+        </li>
+    ));
+
+    const menuUi = <ul className="foot_menu felxBox">{submenuList}</ul>;   
+
     return (
       <div className="foot">
-          <div className="order_info felxBox">
-            <div>
-              <div>집에서 만나는 버거킹</div>
-              <div>딜리버리 전화주문 안내 10:00-22:00 / 연중무휴 (매장별로 상이할 수 있습니다.)</div>
-            </div>
-            <div>1599-0505</div>
-          </div>
           { !this.state.m &&
             <div className="foot_menu_wrapper">
-              <ul className="foot_menu felxBox">
-                <li>
-                  <ul className="foot_sub_menu">
-                    <li>메뉴</li>
-                    <li><a href="#">스페셜</a></li>
-                    <li><a href="#">프리미엄</a></li>
-                    <li><a href="#">와퍼&버거</a></li>
-                    <li><a href="#">치킨&치킨버거</a></li>
-                    <li><a href="#">사이드</a></li>
-                    <li><a href="#">음료</a></li>
-                    <li><a href="#">아침메뉴</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <ul className="foot_sub_menu">
-                    <li>매장</li>
-                    <li><a href="#">매장찾기</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <ul className="foot_sub_menu">
-                    <li>이벤트</li>
-                    <li><a href="#">이벤트</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <ul className="foot_sub_menu">
-                    <li>브랜드 스토리</li>
-                    <li><a href="#">버거킹 스토리</a></li>
-                    <li><a href="#">WHY 버거킹</a></li>
-                    <li><a href="#">버거킹 News</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <ul className="foot_sub_menu">
-                    <li>고객센터</li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">버거킹앱이용안내</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">문의</a></li>
-                    <li><a href="#">가맹점모집</a></li>
-                    <li><a href="#">인재채용</a></li>
-                  </ul>
-                </li>
-              </ul>
+              {menuUi}
             </div>
           }
 

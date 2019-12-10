@@ -1,6 +1,12 @@
 import React from 'react';
-import './App.css';
 import {isMobile} from 'react-device-detect';
+import $ from 'jquery';
+
+import MenuList from './MenuList.js';
+
+
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 class Menu extends React.Component{
 
@@ -16,17 +22,30 @@ class Menu extends React.Component{
   }
 
 
-  menuMouseOver  = (e) => {
-    if(this.state.m){
 
+  handleResize = () => {
+    this.setState({
+        m:false,
+    });
+      if(window.innerWidth < 960){
+        this.setState({
+            m:true,
+        });
+      }
+  }
+
+  mousreClick = (e) => {
+    if(this.state.m){
         if( e.currentTarget.nextSibling.style.display == "block"){
             e.currentTarget.nextSibling.style.display = "none";
         }else{
             e.currentTarget.nextSibling.style.display = "block";
         }
-
-
-    }else{
+    }
+  }
+  
+  menuMouseOver  = (e) => {
+    if(!this.state.m){
         this.setState({
             menuToggle : "menu felxBox open",
             bg:true,
@@ -34,10 +53,12 @@ class Menu extends React.Component{
     }
   }
   menuMouseDown  = (e) => {
-    this.setState({
-        menuToggle : "menu felxBox",
-        bg:false,
-    })
+    if(!this.state.m){
+        this.setState({
+            menuToggle : "menu felxBox",
+            bg:false,
+        })
+    }
   }
 
   menuClose = (e) => {
@@ -50,19 +71,6 @@ class Menu extends React.Component{
           sideMenu : true,
       })
   }
-
-
-  handleResize = () => {
-    this.setState({
-        m:false,
-    });
-      if(window.innerWidth < 960){
-        this.setState({
-            m:true,
-        });
-      }
-      console.log("handleResize --> "+this.state.m);
-  }
   
   componentDidMount = () => {
     window.addEventListener("resize",this.handleResize, false);
@@ -72,8 +80,6 @@ class Menu extends React.Component{
             m:true,
         })
     }
-
-    console.log("componentDidMount --> "+this.state.m);
   }
 
   componentWillUnmount(){
@@ -90,9 +96,50 @@ class Menu extends React.Component{
             left:"0"
         }
     }
-    console.log("render --> "+this.state.m);
+   
+    //메뉴
+    const menus = MenuList.menus;
+    const submenus = MenuList.submenus;
+    const submenuUrl = MenuList.submenuUrl;
+    
+    const submenuList = submenus.map( (submenus,i) => (
+        submenus.map( (submenus,j)=>(
+            <li><Link to={submenuUrl[i][j]}><button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}>{submenus}</button></Link></li>
+        ))
+    ));
+
+    const menuList = menus.map((menu, i) => {
+        if(!this.state.m){
+            if( i < 4 ){
+                return  <li>
+                            <button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}  onClick={(e)=>{this.mousreClick(e)}}>
+                                {menu}
+                                <img src="/images/menuArrow.png" />
+                            </button>
+                            <ul className="sub_menu">
+                                {submenuList[i]}
+                            </ul>
+                        </li>
+            }
+        }else{
+            return  <li>
+                        <button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}  onClick={(e)=>{this.mousreClick(e)}}>
+                            {menu}
+                            <img src="/images/menuArrow.png" />
+                        </button>
+                        <ul className="sub_menu">
+                            {submenuList[i]}
+                        </ul>
+                    </li>
+        }
+    });
+
+    const menuClass = this.state.m == true ? "main_menu" : "main_menu felxBox" ;
+    const menuUi = <ul className={menuClass}>{menuList}</ul>;   
+
 
     return (
+   
       <div className={this.state.menuToggle}>
         { this.state.bg && !isMobile  && <img className="menu_bg" src="/images/bg_login.gif"  /> }
         <div className="menu_inner felxBox">
@@ -105,66 +152,7 @@ class Menu extends React.Component{
                     <button className="delibery_btn">딜리버리주문<span></span></button>
                     <div className="menu_list" style={left}>
                         <div className="close_btn"><button onClick={(e)=>{this.menuClose(e)}}></button></div>
-                        <ul className="main_menu">
-                            <li>
-                                <button onClick={(e)=>{this.menuMouseOver(e)}}>
-                                    메뉴소개
-                                    <span></span>
-                                </button>
-                                <ul className="sub_menu">
-                                    <li><button>스페셜</button></li>
-                                    <li><button>프리미엄</button></li>
-                                    <li><button>와퍼&버거</button></li>
-                                    <li><button>치킨&치킨버거</button></li>
-                                    <li><button>사이드</button></li>
-                                    <li><button>음료</button></li>
-                                    <li><button>아침메뉴</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onClick={(e)=>{this.menuMouseOver(e)}}>
-                                    매장소개
-                                    <span></span>
-                                </button>
-                                <ul className="sub_menu">
-                                    <li><button>매장찾기</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onClick={(e)=>{this.menuMouseOver(e)}}>
-                                    이벤트
-                                    <span></span>
-                                </button>
-                                <ul className="sub_menu">
-                                    <li><button>이벤트</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onClick={(e)=>{this.menuMouseOver(e)}}>
-                                    브랜드스토리
-                                    <span></span>
-                                </button>
-                                <ul className="sub_menu">
-                                    <li><button>버거킹 스토리</button></li>
-                                    <li><button>WHY 버거킹</button></li>
-                                    <li><button>버거킹 NEWS</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onClick={(e)=>{this.menuMouseOver(e)}}>
-                                    고객센터
-                                    <span></span>
-                                </button>
-                                <ul className="sub_menu">
-                                    <li><button>공지사항</button></li>
-                                    <li><button>버거킹앱이용안내</button></li>
-                                    <li><button>FAQ</button></li>
-                                    <li><button>문의</button></li>
-                                    <li><button>가맹점모집</button></li>
-                                    <li><button>인재채용</button></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        {menuUi}
                     </div>
                 </div> 
             }
@@ -175,52 +163,7 @@ class Menu extends React.Component{
                 <div className="felxBox">
                     <h1><a href="/"><img src="/images/logo.png" /></a></h1>
                     <div className="menu_list felxBox">
-                        <ul className="main_menu felxBox">
-                            <li>
-                                <button onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    메뉴소개
-                                    <img src="/images/menuArrow.png" />
-                                </button>
-                                <ul className="sub_menu"  onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    <li><button>스페셜</button></li>
-                                    <li><button>프리미엄</button></li>
-                                    <li><button>와퍼&버거</button></li>
-                                    <li><button>치킨&치킨버거</button></li>
-                                    <li><button>사이드</button></li>
-                                    <li><button>음료</button></li>
-                                    <li><button>아침메뉴</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    매장소개
-                                    <img src="/images/menuArrow.png" />
-                                </button>
-                                <ul className="sub_menu"  onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    <li><button>매장찾기</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    이벤트
-                                    <img src="/images/menuArrow.png" />
-                                </button>
-                                <ul className="sub_menu"  onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    <li><button>이벤트</button></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    브랜드스토리
-                                    <img src="/images/menuArrow.png" />
-                                </button>
-                                <ul className="sub_menu"  onMouseOver={(e)=>{this.menuMouseOver(e)}}  onMouseOut={(e)=>{this.menuMouseDown(e)}}>
-                                    <li><button>버거킹 스토리</button></li>
-                                    <li><button>WHY 버거킹</button></li>
-                                    <li><button>버거킹 NEWS</button></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        {menuUi}
                         <button className="delivery_icon">딜리버리주문</button>
                     </div>
                 </div>
@@ -228,6 +171,7 @@ class Menu extends React.Component{
 
         </div>
       </div>
+  
     );
   }
 }

@@ -2,7 +2,11 @@ import React from 'react';
 import './App.css';
 import './index.css';
 
+import { BrowserRouter as Router, Route, Switch } from'react-router-dom';
+
+
 import Main from './Main.js';
+
 
 
 class App extends React.Component{
@@ -40,13 +44,14 @@ class App extends React.Component{
 
   render(){
     return (
+      <Router>
       <div className="App">
         <div className="inner">
           {this.state.main}
-          
         </div>
         <button onClick={this.handle_scroll_top} className={this.state.scroll} ></button>
       </div>
+      </Router>
     );
   }
 
