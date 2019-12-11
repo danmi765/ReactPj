@@ -40,8 +40,9 @@ class BurgerDetail extends React.Component {
     render() {
 
         const paramTpye = this.props.match.params.type;
-        const paramId = this.props.match.params.id;
+        const paramId = Number(this.props.match.params.id);
         const paramIndex = paramId - 1;
+        const imagePath = "/images/"+paramTpye+"_burger_"+paramId+".png"
 
         const lnb = ["메뉴소개",BurgerList.kor[paramTpye], BurgerList.content[paramTpye][paramIndex] ];
 
@@ -52,6 +53,18 @@ class BurgerDetail extends React.Component {
         return (
             <div>
                 {!this.state.m && <SubTitle name={lnb} /> }
+                <div className="burger_detail_banner">
+                    <div className="burger_detail_inner felxBox">
+                        <div className="detail_txt">
+                            <div>{BurgerList.content[paramTpye][paramIndex]}</div>
+                            <div>{BurgerList.content_detail[paramTpye][paramIndex]}</div>
+                        </div>
+                        <div className="detail_image">
+                            <img className="icon" src="/images/icon.png" />
+                            <img className="detail" src={imagePath} />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

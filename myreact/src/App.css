@@ -25,6 +25,36 @@ a{text-decoration: none;color:#878787;}
 div{position: relative;font-family: 'Black Han Sans', sans-serif;}
 button{border:none;background:none;cursor:pointer;}
 
+
+
+
+.burger_detail_banner{
+  background:url("/images/burger_detail_bg.png") no-repeat 50%;
+  background-size:100% 100%;
+}
+
+.burger_detail_banner .detail_txt{
+  color:#fff;
+  padding-left:20px;
+}
+
+.burger_detail_banner .detail_txt > div:nth-child(1){
+  font-size:1.2em;
+}
+.burger_detail_banner .detail_txt > div:nth-child(2){
+  font-family: 'Gothic A1', sans-serif;
+}
+
+.burger_detail_banner .detail_image{
+  position: absolute;
+}
+.burger_detail_banner .detail_image img{
+
+}
+.burger_detail_banner .detail_image img.icon{
+  position: absolute;
+}
+
 /* PC , TABLET */
 @media (min-width : 961px ) {
   
@@ -538,6 +568,43 @@ button{border:none;background:none;cursor:pointer;}
     color:black;
   }
 
+  .burger_detail_banner{
+    padding:50px 0 120px;
+  }
+
+  .burger_detail_banner .detail_txt{
+    font-size:3em;
+  }
+
+  .burger_detail_banner .detail_txt > div:nth-child(2){
+    letter-spacing: -3px;
+    line-height:28px;
+    font-size:0.5em;
+  }
+  
+  .burger_detail_banner .detail_image{
+    top:0;
+    right:30px;
+  }
+
+  .burger_detail_banner .detail_image img.icon{
+    top:0;left:0;
+  }
+
+  .burger_detail_banner .burger_detail_inner{
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .burger_detail_banner .detail_image img.detail{
+    width:400px;
+  }
+  
+  .burger_detail_banner .detail_txt{
+    min-width:520px;
+    max-width:540px;
+  }
+
 }
 
 /* MOBILE */
@@ -550,10 +617,6 @@ button{border:none;background:none;cursor:pointer;}
     width:45%;
   }
 }
-
-
-
-
 
 /* MOBILE */
 @media (max-width : 960px ) {
@@ -1005,6 +1068,47 @@ button{border:none;background:none;cursor:pointer;}
     vertical-align: middle;
     margin-top:15px;
     width:calc( 100% - 200px);
+  }
+
+  .burger_detail_banner{
+    padding:50px 0 80px;
+  }
+
+  .burger_detail_banner .detail_txt{
+    font-size:1.3em;
+    position: relative;
+    z-index:90;
+  }
+
+  .burger_detail_banner .detail_txt > div:nth-child(2){
+    letter-spacing: -3px;
+    line-height:18px;
+    font-size:0.5em;
+  }
+  
+  .burger_detail_banner .detail_image{
+    top:-30px;
+    right:0;
+  }
+
+  .burger_detail_banner .detail_image img.icon{
+    top:20px;left:45px;
+    width:45px;
+  }
+
+  .burger_detail_banner .burger_detail_inner{
+    max-width:961px;
+    min-width:350px;
+    margin:0 auto;
+  }
+
+  .burger_detail_banner .detail_image img.detail{
+    width:230px;
+  }
+  
+  .burger_detail_banner .detail_txt > div:nth-child(2){
+    min-width:120px;
+    max-width:130px;
   }
 
 

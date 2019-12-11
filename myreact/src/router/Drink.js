@@ -43,7 +43,7 @@ class Drink extends React.Component {
         const burgerList = BurgerList.content.drink;
         const burgerUrl = BurgerList.url.drink;
         const burgerUi = burgerList.map( (burgerList,i) => {
-            let image_path = "/images/drink_"+ (i+1) +".png";
+            let image_path = "/images/drink_burger_"+ (i+1) +".png";
             return <div key={i.toString()}>
                         <Link to={burgerUrl[i]}>
                             <img src={image_path} />
