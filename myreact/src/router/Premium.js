@@ -1,5 +1,6 @@
 import React from 'react';
 import BurgerMenu from './BurgerMenu.js';
+import BurgerList from './BurgerList.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
  
 class Premium extends React.Component {
@@ -39,11 +40,11 @@ class Premium extends React.Component {
 
     render() {
 
-        const burgerList = ["비프칠리통모짜X","비프칠리통모짜와퍼","트러플통모짜X","트러플통모짜와퍼","통모짜X","통모짜와퍼","통모짜와퍼주니어","몬스터X","몬스터와퍼","트러플머쉬롬X","트러플머쉬롬와퍼","통새우스테이크버거","통새우와퍼","콰트로치즈와퍼"];
-        const burgerUrl = ["","","","",""];
+        const burgerList = BurgerList.content.premium;
+        const burgerUrl = BurgerList.url.premium;
         const burgerUi = burgerList.map( (burgerList,i) => {
             let image_path = "/images/premium_burger_"+ (i+1) +".png";
-            return <div>
+            return <div key={i.toString()}>
                         <Link to={burgerUrl[i]}>
                             <img src={image_path} />
                             <span>{burgerList}</span>
@@ -52,7 +53,7 @@ class Premium extends React.Component {
         });
 
         return (
-            <div class="premium">
+            <div className="premium">
                 <BurgerMenu click="/premium" />
                 <div className="felxBox burger_image_list">
                     {burgerUi}

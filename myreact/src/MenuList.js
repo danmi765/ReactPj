@@ -10,7 +10,7 @@ const list = {
         ["공지사항","버거킹앱이용안내","FAQ","문의","가맹점모집","인재채용"]
     ],
     "submenuUrl" : [
-        ["/special","/premium","/burger","/chicken","/sdiemenu","/drink","/morning"],
+        ["/special","/premium","/burger","/chicken","/sidemenu","/drink","/morning"],
         ["/serch"],
         ["/event"],
         ["/story","/why","/news"],

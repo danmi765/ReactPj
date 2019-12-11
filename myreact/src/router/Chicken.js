@@ -3,7 +3,7 @@ import BurgerMenu from './BurgerMenu.js';
 import BurgerList from './BurgerList.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
  
-class Burger extends React.Component {
+class Chicken extends React.Component {
 
     
     constructor(props){
@@ -40,10 +40,10 @@ class Burger extends React.Component {
 
     render() {
 
-        const burgerList = BurgerList.content.burger;
-        const burgerUrl = BurgerList.url.burger;
+        const burgerList = BurgerList.content.chicken;
+        const burgerUrl = BurgerList.url.chicken;
         const burgerUi = burgerList.map( (burgerList,i) => {
-            let image_path = "/images/wafer_burger_"+ (i+1) +".png";
+            let image_path = "/images/chicken_burger_"+ (i+1) +".png";
             return <div key={i.toString()}>
                         <Link to={burgerUrl[i]}>
                             <img src={image_path} />
@@ -53,8 +53,8 @@ class Burger extends React.Component {
         });
 
         return (
-            <div className="wafer">
-                <BurgerMenu click="/burger" />
+            <div className="chicken">
+                <BurgerMenu click="/chicken" />
                 <div className="felxBox burger_image_list">
                     {burgerUi}
                 </div>
@@ -63,4 +63,4 @@ class Burger extends React.Component {
     }
 }
  
-export default Burger;
+export default Chicken;

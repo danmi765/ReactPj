@@ -46,11 +46,11 @@ class Foot extends React.Component{
     const submenuUrl = MenuList.submenuUrl;
     
     const submenuList = submenus.map( (submenus,i) => (
-        <li>
+        <li key={i.toString()}>
           <ul className="foot_sub_menu">
             <li>{menus[i]}</li>
           {submenus.map( (submenus,j)=>(
-              <li><Link to={submenuUrl[i][j]}>{submenus}</Link></li>
+              <li key={j.toString()+"_"+i.toString()}><Link to={submenuUrl[i][j]}>{submenus}</Link></li>
           ))}
           </ul>
         </li>

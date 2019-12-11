@@ -1,9 +1,9 @@
 import React from 'react';
-import BurgerMenu from './BurgerMenu.js';
+import SubTitle from './SubTitle.js';
 import BurgerList from './BurgerList.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
  
-class Burger extends React.Component {
+class BurgerDetail extends React.Component {
 
     
     constructor(props){
@@ -31,8 +31,7 @@ class Burger extends React.Component {
             this.setState({
                 m : true,
             })
-        }
-    
+        }    
     }
     componentWillUnmount(){
         window.addEventListener("resize",this.handleResize, false);
@@ -40,27 +39,22 @@ class Burger extends React.Component {
 
     render() {
 
-        const burgerList = BurgerList.content.burger;
-        const burgerUrl = BurgerList.url.burger;
-        const burgerUi = burgerList.map( (burgerList,i) => {
-            let image_path = "/images/wafer_burger_"+ (i+1) +".png";
-            return <div key={i.toString()}>
-                        <Link to={burgerUrl[i]}>
-                            <img src={image_path} />
-                            <span>{burgerList}</span>
-                        </Link>
-                    </div>
-        });
+        const paramTpye = this.props.match.params.type;
+        const paramId = this.props.match.params.id;
+        const paramIndex = paramId - 1;
+
+        const lnb = ["메뉴소개",BurgerList.kor[paramTpye], BurgerList.content[paramTpye][paramIndex] ];
+
+        //images
+        // /images/{paramTpye}_detail.png
+
 
         return (
-            <div className="wafer">
-                <BurgerMenu click="/burger" />
-                <div className="felxBox burger_image_list">
-                    {burgerUi}
-                </div>
+            <div>
+                {!this.state.m && <SubTitle name={lnb} /> }
             </div>
         );
     }
 }
  
-export default Burger;
+export default BurgerDetail;

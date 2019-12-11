@@ -1,5 +1,6 @@
 import React from 'react';
 import BurgerMenu from './BurgerMenu.js';
+import BurgerList from './BurgerList.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
  
 class Special extends React.Component {
@@ -39,11 +40,11 @@ class Special extends React.Component {
 
     render() {
 
-        const burgerList = ["메가몬스터K","트러플통모짜팩1","트러플모짜팩2","트러플모짜팩3","트러플모짜팩4"];
-        const burgerUrl = ["","","","",""];
+        const burgerList = BurgerList.content.special;
+        const burgerUrl = BurgerList.url.special;
         const burgerUi = burgerList.map( (burgerList,i) => {
             let image_path = "/images/special_burger_"+ (i+1) +".png";
-            return <div>
+            return <div key={i.toString()}>
                         <Link to={burgerUrl[i]}>
                             <img src={image_path} />
                             <span>{burgerList}</span>
@@ -52,7 +53,7 @@ class Special extends React.Component {
         });
 
         return (
-            <div class="special">
+            <div className="special">
                 <BurgerMenu click="/special" />
                 <div className="felxBox burger_image_list">
                     {burgerUi}

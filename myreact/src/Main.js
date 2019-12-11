@@ -7,9 +7,16 @@ import Menu from './Menu.js';
 import Foot from './Foot.js';
 
 import Home from './router/Home.js';
-import Special from'./router/Special.js';
+import Special from'./router/Special.js'; 
 import Premium from'./router/Premium.js';
 import Wafer from'./router/Burger.js';
+import Chicken from'./router/Chicken.js';
+import Sidemenu from'./router/Sidemenu.js';
+import Drink from'./router/Drink.js';
+import Morning from'./router/Morning.js';
+
+
+import BurgerDetail from'./router/BurgerDetail';
 
 
 class Main extends React.Component{
@@ -34,6 +41,7 @@ class Main extends React.Component{
   }
   
   componentDidMount = () => {
+    // console.log('componentDidMount');
     window.addEventListener("resize",this.handleResize, false);
     if(window.innerWidth < 960){
       this.setState({
@@ -49,6 +57,16 @@ class Main extends React.Component{
   }
   componentWillUnmount(){
     window.addEventListener("resize",this.handleResize, false);
+    // console.log('componentWillUnmount');
+  }
+
+
+  componentWillUpdate(nextProps, nextState){
+    // console.log('componentWillUpdate');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('componentDidUpdate');
   }
 
   render(){
@@ -62,6 +80,12 @@ class Main extends React.Component{
             <Route path="/special" render={(props) => <Special {...props} />}/>
             <Route path="/premium" render={(props) => <Premium {...props} />}/>
             <Route path="/burger" render={(props) => <Wafer {...props} />}/>
+            <Route path="/chicken" render={(props) => <Chicken {...props} />}/>
+            <Route path="/sidemenu" render={(props) => <Sidemenu {...props} />}/>
+            <Route path="/drink" render={(props) => <Drink {...props} />}/>
+            <Route path="/morning" render={(props) => <Morning {...props} />}/>
+
+            <Route path="/detail/:type/:id" render={(props) => <BurgerDetail {...props} />}/>
           </Switch>
 
           

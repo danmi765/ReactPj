@@ -40,21 +40,22 @@ class Special extends React.Component {
 
     render() {
 
-        console.log(this.props.click);
+        // console.log(this.props.click);
 
         const burgerList = MenuList.submenus[0];
         const submenuUrl = MenuList.submenuUrl[0];
 
         const submenuList = burgerList.map( (burgerList,i) => {
             let clickItem = this.props.click == submenuUrl[i] ? "click" : "" ;
-            return <li className={clickItem}><Link to={submenuUrl[i]}>{burgerList}</Link></li>
+            return <li key={submenuUrl[i]} className={clickItem}><Link to={submenuUrl[i]}>{burgerList}</Link></li>
         });
 
+        const lnb = ["메뉴소개"];
 
         return (
             <div>
-                {!this.state.m && <SubTitle name="메뉴소개" name2="" /> }
-                <div class="burger_menu felxBox">
+                {!this.state.m && <SubTitle name={lnb} /> }
+                <div className="burger_menu felxBox">
                     <h3 className="page_title">메뉴소개</h3>
                     <ul className="burger_list felxBox">
                         {submenuList}

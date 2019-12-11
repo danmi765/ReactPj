@@ -11,13 +11,17 @@ class SubTitle extends React.Component {
     }
 
     render() {
+
+        const lnbList = this.props.name.map((val, i) => {
+            return <span key={i.toString()} className="bracket">{val}</span>
+        });
+
         return (
             <div>
                 <div className="subpage_title"> 
                     <div className="inner">
                         <span>HOME</span>
-                        <span class="bracket">{this.props.name}</span>
-                        <span class="bracket">{this.props.name2}</span>
+                        {lnbList}
                     </div>
                 </div>
             </div>

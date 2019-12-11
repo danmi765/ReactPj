@@ -42,6 +42,7 @@ class Menu extends React.Component{
             e.currentTarget.nextSibling.style.display = "block";
         }
     }
+    
   }
   
   menuMouseOver  = (e) => {
@@ -64,7 +65,12 @@ class Menu extends React.Component{
   menuClose = (e) => {
       this.setState({
           sideMenu : false,
+          menuToggle : "menu felxBox",
       })
+      if( this.state.m ){
+        $(".sub_menu").hide();
+      }
+      $(".top_btn ").hide();
   }
   menuOpen = (e) => {
       this.setState({
@@ -104,14 +110,14 @@ class Menu extends React.Component{
     
     const submenuList = submenus.map( (submenus,i) => (
         submenus.map( (submenus,j)=>(
-            <li><Link to={submenuUrl[i][j]}><button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}>{submenus}</button></Link></li>
+            <li key={submenus}><Link to={submenuUrl[i][j]}><button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}} onClick={(e)=>{this.menuClose(e)}} >{submenus}</button></Link></li>
         ))
     ));
 
     const menuList = menus.map((menu, i) => {
         if(!this.state.m){
             if( i < 4 ){
-                return  <li>
+                return  <li key={menu}>
                             <button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}  onClick={(e)=>{this.mousreClick(e)}}>
                                 {menu}
                                 <img src="/images/menuArrow.png" />
@@ -122,7 +128,7 @@ class Menu extends React.Component{
                         </li>
             }
         }else{
-            return  <li>
+            return  <li key={menu}>
                         <button onMouseOver={(e)=>{this.menuMouseOver(e)}} onMouseOut={(e)=>{this.menuMouseDown(e)}}  onClick={(e)=>{this.mousreClick(e)}}>
                             {menu}
                             <img src="/images/menuArrow.png" />
